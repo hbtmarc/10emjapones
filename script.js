@@ -104,3 +104,20 @@ function toggleFixation() {
     const fixationSection = document.getElementById("fixation-section");
     fixationSection.classList.toggle("translucent");
 }
+
+function toggleFixation() {
+    const fixationSection = document.getElementById("fixation-section");
+    const toggleButton = document.getElementById("toggleButton");
+
+    // Alterna a classe de desfoque
+    fixationSection.classList.toggle("translucent");
+
+    // Altera o texto do botão com base no estado
+    if (fixationSection.classList.contains("translucent")) {
+        toggleButton.textContent = "Deixar Vísível";  // Se estiver translúcido, muda o texto para "Deixar Vísível"
+    } else {
+        toggleButton.textContent = "Deixar Translúcido";  // Caso contrário, volta para "Deixar Translúcido"
+    }
+}
+
+
