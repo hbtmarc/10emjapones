@@ -1,0 +1,195 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 40px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalhos */
+h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Seção Aleatória */
+.random-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #e7f5e1;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.random-section .circle {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    margin: 20px;
+    text-transform: uppercase;
+}
+
+input {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    margin-top: 20px;
+    width: 60%;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #4CAF50;
+}
+
+button {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Feedback de Resposta com Animação */
+.feedback {
+    margin-top: 15px;
+    font-size: 1.2em;
+    color: #ff0000;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease;
+}
+
+.feedback.correct {
+    color: green;
+    transform: scale(1.2);
+}
+
+.feedback.error {
+    color: red;
+    transform: scale(1.1);
+}
+
+/* Pontuação */
+.score {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.scoreAnimation {
+    font-size: 2em;
+    color: green;
+    font-weight: bold;
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Seção de Fixação */
+.fixation-section {
+    margin-top: 40px;
+}
+
+.numbers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.number-item {
+    margin: 15px;
+    text-align: center;
+}
+
+.number-item .circle {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    background-color: #8bc34a;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.pronunciation {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.jp-text {
+    font-size: 1.3em;
+    color: #555;
+    font-weight: 700;
+}
+
+/* Botão de Tornar Translúcido */
+button#toggleButton {
+    margin-top: 20px;
+    background-color: #f4f4f9;
+    color: #333;
+    border: 2px solid #4CAF50;
+}
+
+/* Efeito de Translucidez e Desfoque */
+.translucent {
+    filter: blur(5px) brightness(0.6);
+    pointer-events: none; /* Impede interação com a seção */
+    opacity: 0.7;
+}
+
+/* Manter botão visível, mesmo com desfoque */
+#toggleButton {
+    position: relative;
+    z-index: 10;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    input {
+        width: 80%;
+    }
+
+    .numbers-container {
+        flex-direction: column;
+    }
+}
