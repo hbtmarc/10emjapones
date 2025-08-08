@@ -41,43 +41,49 @@ function validateAnswer() {
     const feedback = document.getElementById("feedback");
 
     if (parseInt(userAnswer) === currentPronunciation.en) {
-        // Incrementa a pontuação
-        score += 1;
-        document.getElementById("scoreValue").textContent = score;
+    // Incrementa a pontuação
+    score += 1;
+    document.getElementById("scoreValue").textContent = score;
 
-        // Animação de +1
-        const scoreAnim = document.getElementById("scoreAnimation");
-        scoreAnim.textContent = "+1";
-        scoreAnim.style.opacity = 1;
-        scoreAnim.style.transform = "scale(1.5)";
-        setTimeout(() => {
-            scoreAnim.style.opacity = 0;
-            scoreAnim.style.transform = "scale(1)";
-        }, 1000);
+    // Animação de +1
+    const scoreAnim = document.getElementById("scoreAnimation");
+    scoreAnim.textContent = "+1";
+    scoreAnim.style.opacity = 1;
+    scoreAnim.style.transform = "scale(1.5)";
+    setTimeout(() => {
+        scoreAnim.style.opacity = 0;
+        scoreAnim.style.transform = "scale(1)";
+    }, 1000);
 
-        feedback.textContent = "Correto! Próximo número...";
-        feedback.classList.add("correct");
-        feedback.classList.remove("error");
-    } else {
-        // Zera a pontuação
-        score = 0;
-        document.getElementById("scoreValue").textContent = score;
+    // Usando innerHTML para permitir quebras de linha
+    feedback.innerHTML = "Correto! <br> Próximo número...";
+    feedback.classList.add("correct");
+    feedback.classList.remove("error");
+} else {
+    // Zera a pontuação
+    score = 0;
+    document.getElementById("scoreValue").textContent = score;
 
-        // Animação de erro
-        const scoreAnim = document.getElementById("scoreAnimation");
-        scoreAnim.textContent = "ERRO!";
-        scoreAnim.style.opacity = 1;
-        scoreAnim.style.transform = "scale(1.5)";
-        scoreAnim.style.color = "red";
-        setTimeout(() => {
-            scoreAnim.style.opacity = 0;
-            scoreAnim.style.transform = "scale(1)";
-        }, 1000);
+    // Animação de erro
+    const scoreAnim = document.getElementById("scoreAnimation");
+    scoreAnim.textContent = "ERRO!";
+    scoreAnim.style.opacity = 1;
+    scoreAnim.style.transform = "scale(1.5)";
+    scoreAnim.style.color = "red";
+    setTimeout(() => {
+        scoreAnim.style.opacity = 0;
+        scoreAnim.style.transform = "scale(1)";
+    }, 1000);
 
-        feedback.textContent = `Errado! A resposta correta é ${currentPronunciation.en}`;
-        feedback.classList.add("error");
-        feedback.classList.remove("correct");
-    }
+    // Usando innerHTML para permitir quebras de linha
+    feedback.innerHTML = `Errado! <br> A resposta correta é ${currentPronunciation.en}`;
+    feedback.classList.add("error");
+    feedback.classList.remove("correct");
+}
+
+feedback.style.opacity = 1;  // Mostrar feedback
+setTimeout(getRandomNumber, 2000);  // Avançar após 2 segundos se errar
+
 
     feedback.style.opacity = 1;  // Mostrar feedback
     setTimeout(getRandomNumber, 2000);  // Avançar após 2 segundos se errar
@@ -98,3 +104,4 @@ function toggleFixation() {
     const fixationSection = document.getElementById("fixation-section");
     fixationSection.classList.toggle("translucent");
 }
+
