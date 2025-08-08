@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorização de Números em Japonês</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Primeira Seção: Pronúncia Aleatória -->
+        <section class="random-section">
+            <h2>Pronúncia Aleatória</h2>
+            <div class="circle" id="pronunciation"></div>
+            <input type="number" id="userInput" placeholder="Digite o número em português" />
+            <button onclick="validateAnswer()">Verificar</button>
+            <p id="feedback" class="feedback"></p>
+            <div id="score" class="score">Pontos: <span id="scoreValue">0</span></div>
+            <div id="scoreAnimation" class="scoreAnimation"></div>
+        </section>
+
+        <!-- Segunda Seção: Fixação dos Números -->
+        <section class="fixation-section" id="fixation-section">
+            <h2>Fixação dos Números</h2>
+            <div class="numbers-container">
+                <div class="number-item">
+                    <div class="circle">1</div>
+                    <p class="pronunciation">ICHI</p>
+                    <p class="jp-text">いち</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">2</div>
+                    <p class="pronunciation">NI</p>
+                    <p class="jp-text">に</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">3</div>
+                    <p class="pronunciation">SAN</p>
+                    <p class="jp-text">さん</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">4</div>
+                    <p class="pronunciation">SHI</p>
+                    <p class="jp-text">し</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">5</div>
+                    <p class="pronunciation">GO</p>
+                    <p class="jp-text">ご</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">6</div>
+                    <p class="pronunciation">ROKU</p>
+                    <p class="jp-text">ろく</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">7</div>
+                    <p class="pronunciation">SHICHI</p>
+                    <p class="jp-text">しち</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">8</div>
+                    <p class="pronunciation">HACHI</p>
+                    <p class="jp-text">はち</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">9</div>
+                    <p class="pronunciation">KYUU</p>
+                    <p class="jp-text">きゅう</p>
+                </div>
+                <div class="number-item">
+                    <div class="circle">10</div>
+                    <p class="pronunciation">JUU</p>
+                    <p class="jp-text">じゅう</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terceira Seção: Botão de Desfoque (Sempre visível) -->
+        <section class="invisible-section">
+            <button id="toggleButton" onclick="toggleFixation()">Deixar Translúcido</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
