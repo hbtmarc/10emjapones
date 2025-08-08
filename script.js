@@ -104,4 +104,3 @@ function toggleFixation() {
     const fixationSection = document.getElementById("fixation-section");
     fixationSection.classList.toggle("translucent");
 }
-
