@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-decoration"></div>
+    <div class="background-decoration">
+        <div class="floating-emoji">❤️</div>
+        <div class="floating-emoji">💕</div>
+        <div class="floating-emoji">💖</div>
+        <div class="floating-emoji">🌸</div>
+        <div class="floating-emoji">✨</div>
+        <div class="floating-emoji">💫</div>
+    </div>
     
     <div class="container">
         <header class="app-header">
@@ -16,7 +23,10 @@
                 <span class="title-jp">数字</span>
                 <span class="title-text">Números em Japonês</span>
             </h1>
-            <p class="subtitle">Aprenda de forma interativa e divertida!</p>
+            <p class="subtitle">Aprenda de forma interativa e divertida! 🎌</p>
+            <div class="header-decoration">
+                <div class="love-emoji">💝</div>
+            </div>
         </header>
 
         <!-- Primeira Seção: Pronúncia Aleatória -->
@@ -39,11 +49,12 @@
                 <div class="circle-wrapper">
                     <div class="circle-glow"></div>
                     <div class="circle" id="pronunciation"></div>
+                    <div class="heart-burst" id="heartBurst"></div>
                 </div>
             </div>
             
             <div class="input-group">
-                <input type="number" id="userInput" placeholder="Digite o número (1-10)" aria-label="Digite sua resposta" />
+                <input type="number" id="userInput" placeholder="Digite o número (1-10)" aria-label="Digite sua resposta" min="1" max="10" />
                 <button class="btn-primary" onclick="validateAnswer()">
                     <span class="btn-text">Verificar</span>
                     <span class="btn-icon">→</span>
@@ -53,6 +64,18 @@
             <div class="feedback-container">
                 <p id="feedback" class="feedback"></p>
                 <div id="scoreAnimation" class="scoreAnimation"></div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-label">Progresso do Aprendizado</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span>Acertos: <strong id="correctCount">0</strong></span>
+                    <span>Tentativas: <strong id="totalCount">0</strong></span>
+                    <span>Taxa: <strong id="accuracy">0%</strong></span>
+                </div>
             </div>
         </section>
 
@@ -64,7 +87,7 @@
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                     </svg>
-                    Tabela de Referência
+                    Tabela de Referência Completa
                 </h2>
                 <button class="toggle-button" id="toggleButton" onclick="toggleFixation()">
                     <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -75,75 +98,142 @@
                 </button>
             </div>
             
-            <div class="numbers-grid">
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">1</div>
-                        <p class="romaji">ICHI</p>
-                        <p class="hiragana">いち</p>
+            <div class="reference-table">
+                <div class="table-header">
+                    <div class="table-cell">Número</div>
+                    <div class="table-cell">Kanji</div>
+                    <div class="table-cell">Hiragana</div>
+                    <div class="table-cell">Romaji</div>
+                    <div class="table-cell">Áudio</div>
+                </div>
+                <div class="table-row" data-number="1">
+                    <div class="table-cell"><span class="number-badge">1</span></div>
+                    <div class="table-cell kanji">一</div>
+                    <div class="table-cell hiragana">いち</div>
+                    <div class="table-cell romaji">ICHI</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(1, 'ichi')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">2</div>
-                        <p class="romaji">NI</p>
-                        <p class="hiragana">に</p>
+                <div class="table-row" data-number="2">
+                    <div class="table-cell"><span class="number-badge">2</span></div>
+                    <div class="table-cell kanji">二</div>
+                    <div class="table-cell hiragana">に</div>
+                    <div class="table-cell romaji">NI</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(2, 'ni')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">3</div>
-                        <p class="romaji">SAN</p>
-                        <p class="hiragana">さん</p>
+                <div class="table-row" data-number="3">
+                    <div class="table-cell"><span class="number-badge">3</span></div>
+                    <div class="table-cell kanji">三</div>
+                    <div class="table-cell hiragana">さん</div>
+                    <div class="table-cell romaji">SAN</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(3, 'san')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">4</div>
-                        <p class="romaji">SHI</p>
-                        <p class="hiragana">し</p>
+                <div class="table-row" data-number="4">
+                    <div class="table-cell"><span class="number-badge">4</span></div>
+                    <div class="table-cell kanji">四</div>
+                    <div class="table-cell hiragana">し</div>
+                    <div class="table-cell romaji">SHI</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(4, 'shi')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">5</div>
-                        <p class="romaji">GO</p>
-                        <p class="hiragana">ご</p>
+                <div class="table-row" data-number="5">
+                    <div class="table-cell"><span class="number-badge">5</span></div>
+                    <div class="table-cell kanji">五</div>
+                    <div class="table-cell hiragana">ご</div>
+                    <div class="table-cell romaji">GO</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(5, 'go')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">6</div>
-                        <p class="romaji">ROKU</p>
-                        <p class="hiragana">ろく</p>
+                <div class="table-row" data-number="6">
+                    <div class="table-cell"><span class="number-badge">6</span></div>
+                    <div class="table-cell kanji">六</div>
+                    <div class="table-cell hiragana">ろく</div>
+                    <div class="table-cell romaji">ROKU</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(6, 'roku')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">7</div>
-                        <p class="romaji">SHICHI</p>
-                        <p class="hiragana">しち</p>
+                <div class="table-row" data-number="7">
+                    <div class="table-cell"><span class="number-badge">7</span></div>
+                    <div class="table-cell kanji">七</div>
+                    <div class="table-cell hiragana">しち</div>
+                    <div class="table-cell romaji">SHICHI</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(7, 'shichi')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">8</div>
-                        <p class="romaji">HACHI</p>
-                        <p class="hiragana">はち</p>
+                <div class="table-row" data-number="8">
+                    <div class="table-cell"><span class="number-badge">8</span></div>
+                    <div class="table-cell kanji">八</div>
+                    <div class="table-cell hiragana">はち</div>
+                    <div class="table-cell romaji">HACHI</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(8, 'hachi')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">9</div>
-                        <p class="romaji">KYUU</p>
-                        <p class="hiragana">きゅう</p>
+                <div class="table-row" data-number="9">
+                    <div class="table-cell"><span class="number-badge">9</span></div>
+                    <div class="table-cell kanji">九</div>
+                    <div class="table-cell hiragana">きゅう</div>
+                    <div class="table-cell romaji">KYUU</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(9, 'kyuu')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">10</div>
-                        <p class="romaji">JUU</p>
-                        <p class="hiragana">じゅう</p>
+                <div class="table-row" data-number="10">
+                    <div class="table-cell"><span class="number-badge">10</span></div>
+                    <div class="table-cell kanji">十</div>
+                    <div class="table-cell hiragana">じゅう</div>
+                    <div class="table-cell romaji">JUU</div>
+                    <div class="table-cell audio-cell">
+                        <button class="audio-btn" onclick="speakNumber(10, 'juu')" aria-label="Ouvir pronúncia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
