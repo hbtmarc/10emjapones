@@ -126,22 +126,23 @@ function showFeedback(element, message, type) {
 
 // Cria efeito de confete
 function createConfetti() {
-    const emojis = ['🎉', '✨', '⭐', '🌟', '💫'];
+    const emojis = ['🎉', '✨', '⭐', '🌟', '💫', '💝', '💖', '💗'];
     const container = document.querySelector('.pronunciation-display');
     
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 8; i++) {
         const confetti = document.createElement('div');
         confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
         confetti.style.position = 'absolute';
-        confetti.style.fontSize = '24px';
+        confetti.style.fontSize = '28px';
         confetti.style.pointerEvents = 'none';
-        confetti.style.left = `${50 + (Math.random() - 0.5) * 100}%`;
+        confetti.style.left = `${50 + (Math.random() - 0.5) * 120}%`;
         confetti.style.top = '50%';
-        confetti.style.animation = `confettiFall ${0.8 + Math.random() * 0.4}s ease-out forwards`;
+        confetti.style.animation = `confettiFall ${0.9 + Math.random() * 0.5}s ease-out forwards`;
+        confetti.style.zIndex = '1000';
         
         container.appendChild(confetti);
         
-        setTimeout(() => confetti.remove(), 1200);
+        setTimeout(() => confetti.remove(), 1400);
     }
 }
 
@@ -156,19 +157,58 @@ if (!document.getElementById('confetti-animation')) {
                 opacity: 1;
             }
             100% { 
-                transform: translateY(${-100 - Math.random() * 50}px) 
+                transform: translateY(${-120 - Math.random() * 60}px) 
                            rotate(${360 * (Math.random() - 0.5)}deg) 
-                           scale(1);
+                           scale(1.2);
                 opacity: 0;
             }
         }
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+            25% { transform: translateX(-12px); }
+            50% { transform: translateX(12px); }
+            75% { transform: translateX(-8px); }
+        }
+        @keyframes floatingHeart {
+            0% {
+                transform: translateY(0) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) scale(1) rotate(${Math.random() * 360}deg);
+                opacity: 0;
+            }
         }
     `;
     document.head.appendChild(style);
+}
+
+// Adiciona corações flutuantes românticos no fundo
+function createFloatingHearts() {
+    const hearts = ['💖', '💝', '💗', '💓', '💕', '💞'];
+    const container = document.body;
+    
+    setInterval(() => {
+        if (Math.random() < 0.3) { // 30% de chance a cada intervalo
+            const heart = document.createElement('div');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.position = 'fixed';
+            heart.style.fontSize = '24px';
+            heart.style.pointerEvents = 'none';
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.bottom = '-30px';
+            heart.style.animation = `floatingHeart ${4 + Math.random() * 3}s ease-out forwards`;
+            heart.style.zIndex = '0';
+            heart.style.opacity = '0.3';
+            
+            container.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 7000);
+        }
+    }, 3000);
 }
 
 // Toggle da seção de fixação
@@ -206,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.03)';
+            this.style.transform = 'translateY(-10px) scale(1.05)';
         });
         
         card.addEventListener('mouseleave', function() {
@@ -218,10 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const badge = this.querySelector('.number-badge');
             badge.style.animation = 'none';
             badge.offsetHeight; // Trigger reflow
-            badge.style.animation = 'bounceIn 0.4s ease-out';
+            badge.style.animation = 'bounceIn 0.5s ease-out';
         });
     });
     
     // Inicia com primeiro número
     getRandomNumber();
+    
+    // Inicia corações flutuantes românticos
+    createFloatingHearts();
 });
