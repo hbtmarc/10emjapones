@@ -105,10 +105,6 @@ body {
     gap: 12px;
 }
 
-.icon {
-    color: #667eea;
-}
-
 /* Contador de Sequência */
 .streak-container {
     display: flex;
@@ -140,15 +136,6 @@ body {
     display: flex;
     justify-content: center;
     margin: 40px 0;
-}
-
-.circle-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.circle-glow {
-    display: none;
 }
 
 .circle {
@@ -284,10 +271,6 @@ input::placeholder {
     color: white;
 }
 
-.eye-icon {
-    /* no transition */
-}
-
 /* Grid de Números */
 .numbers-grid {
     display: grid;
@@ -302,18 +285,15 @@ input::placeholder {
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     cursor: pointer;
-}
-
-.number-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.card-inner {
     padding: 24px 16px;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.number-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .number-badge {

@@ -96,23 +96,12 @@ function showFeedback(element, message, type) {
 // Toggle da seção de fixação
 function toggleFixation() {
     const fixationSection = document.getElementById("fixation-section");
-    const toggleButton = document.getElementById("toggleButton");
     const toggleText = document.getElementById("toggleText");
-    const eyePath = document.getElementById("eyePath");
-    const eyeCircle = document.getElementById("eyeCircle");
     
     isHidden = !isHidden;
     fixationSection.classList.toggle("hidden");
     
-    if (isHidden) {
-        toggleText.textContent = "Mostrar";
-        eyePath.style.opacity = "0.3";
-        eyeCircle.style.opacity = "0.3";
-    } else {
-        toggleText.textContent = "Ocultar";
-        eyePath.style.opacity = "1";
-        eyeCircle.style.opacity = "1";
-    }
+    toggleText.textContent = isHidden ? "Mostrar" : "Ocultar";
 }
 
 // Event listeners
