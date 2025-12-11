@@ -203,10 +203,6 @@ input::placeholder {
     background: var(--primary-dark);
 }
 
-.btn-primary:active {
-    transform: scale(0.98);
-}
-
 .btn-icon {
     font-size: 1.3em;
 }
@@ -349,7 +345,7 @@ input::placeholder {
    ESTADOS INTERATIVOS E ACESSIBILIDADE
    ============================================ */
 *:focus-visible {
-    outline: 3px solid #667eea;
+    outline: 4px solid #667eea;
     outline-offset: 3px;
 }
 
@@ -362,6 +358,10 @@ button:disabled {
     background: #667eea;
     color: white;
 }
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
 @media (max-width: 768px) {
     body {
         padding: 15px;
@@ -452,24 +452,6 @@ button:disabled {
     .numbers-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-}
-
-/* ============================================
-   ESTADOS INTERATIVOS E ACESSIBILIDADE
-   ============================================ */
-*:focus-visible {
-    outline: 3px solid #667eea;
-    outline-offset: 3px;
-}
-
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-::selection {
-    background: #667eea;
-    color: white;
 }
 
 /* ============================================

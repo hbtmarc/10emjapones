@@ -35,11 +35,11 @@ function getRandomNumber() {
     
     // Limpa feedback
     const feedback = document.getElementById("feedback");
-    feedback.classList.remove('show', 'correct', 'error');
+    feedback.classList.remove('correct', 'error');
     feedback.textContent = '';
     
     const scoreAnim = document.getElementById("scoreAnimation");
-    scoreAnim.classList.remove('show');
+    scoreAnim.textContent = '';
 }
 
 // Validação da resposta
@@ -90,7 +90,7 @@ function updateScore() {
 // Exibe feedback
 function showFeedback(element, message, type) {
     element.innerHTML = message;
-    element.classList.add('show', type);
+    element.classList.add(type);
 }
 
 // Toggle da seção de fixação
