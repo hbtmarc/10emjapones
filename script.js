@@ -11,6 +11,8 @@ const numbers = [
     { jp: "じゅう", en: 10, pron: "juu" }
 ];
 
+const NEXT_QUESTION_DELAY = 1500;
+
 let currentPronunciation = {};
 let lastThreeIndexes = [];
 let score = 0;
@@ -79,7 +81,7 @@ function validateAnswer() {
     }
 
     // Próximo número
-    setTimeout(getRandomNumber, 1500);
+    setTimeout(getRandomNumber, NEXT_QUESTION_DELAY);
 }
 
 // Atualiza pontuação

@@ -29,10 +29,6 @@ body {
     padding: 20px;
 }
 
-.background-decoration {
-    display: none;
-}
-
 /* ============================================
    CONTAINER PRINCIPAL
    ============================================ */
@@ -345,7 +341,7 @@ input::placeholder {
    ESTADOS INTERATIVOS E ACESSIBILIDADE
    ============================================ */
 *:focus-visible {
-    outline: 4px solid #667eea;
+    outline: 3px solid #667eea;
     outline-offset: 3px;
 }
 
