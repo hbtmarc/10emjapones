@@ -399,11 +399,6 @@ button:disabled {
         font-size: 1.8em;
     }
 
-    .circle-glow {
-        width: 180px;
-        height: 180px;
-    }
-
     .input-group {
         flex-direction: column;
         width: 100%;
@@ -453,7 +448,3 @@ button:disabled {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
-/* ============================================
-   RESPONSIVIDADE
-   ============================================ */
