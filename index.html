@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-decoration"></div>
-    
     <div class="container">
         <header class="app-header">
             <h1 class="main-title">
@@ -22,13 +20,7 @@
         <!-- Primeira Seção: Pronúncia Aleatória -->
         <section class="random-section">
             <div class="section-header">
-                <h2>
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                    Desafio de Pronúncia
-                </h2>
+                <h2>Desafio de Pronúncia</h2>
                 <div class="streak-container">
                     <span class="streak-icon">🔥</span>
                     <span class="streak-text">Sequência: <strong id="scoreValue">0</strong></span>
@@ -36,10 +28,7 @@
             </div>
             
             <div class="pronunciation-display">
-                <div class="circle-wrapper">
-                    <div class="circle-glow"></div>
-                    <div class="circle" id="pronunciation"></div>
-                </div>
+                <div class="circle" id="pronunciation"></div>
             </div>
             
             <div class="input-group">
@@ -59,92 +48,62 @@
         <!-- Segunda Seção: Fixação dos Números -->
         <section class="fixation-section" id="fixation-section">
             <div class="section-header">
-                <h2>
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    </svg>
-                    Tabela de Referência
-                </h2>
+                <h2>Tabela de Referência</h2>
                 <button class="toggle-button" id="toggleButton" onclick="toggleFixation()">
-                    <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path id="eyePath" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle id="eyeCircle" cx="12" cy="12" r="3"/>
-                    </svg>
                     <span id="toggleText">Ocultar</span>
                 </button>
             </div>
             
             <div class="numbers-grid">
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">1</div>
-                        <p class="romaji">ICHI</p>
-                        <p class="hiragana">いち</p>
-                    </div>
+                    <div class="number-badge">1</div>
+                    <p class="romaji">ICHI</p>
+                    <p class="hiragana">いち</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">2</div>
-                        <p class="romaji">NI</p>
-                        <p class="hiragana">に</p>
-                    </div>
+                    <div class="number-badge">2</div>
+                    <p class="romaji">NI</p>
+                    <p class="hiragana">に</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">3</div>
-                        <p class="romaji">SAN</p>
-                        <p class="hiragana">さん</p>
-                    </div>
+                    <div class="number-badge">3</div>
+                    <p class="romaji">SAN</p>
+                    <p class="hiragana">さん</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">4</div>
-                        <p class="romaji">SHI</p>
-                        <p class="hiragana">し</p>
-                    </div>
+                    <div class="number-badge">4</div>
+                    <p class="romaji">SHI</p>
+                    <p class="hiragana">し</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">5</div>
-                        <p class="romaji">GO</p>
-                        <p class="hiragana">ご</p>
-                    </div>
+                    <div class="number-badge">5</div>
+                    <p class="romaji">GO</p>
+                    <p class="hiragana">ご</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">6</div>
-                        <p class="romaji">ROKU</p>
-                        <p class="hiragana">ろく</p>
-                    </div>
+                    <div class="number-badge">6</div>
+                    <p class="romaji">ROKU</p>
+                    <p class="hiragana">ろく</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">7</div>
-                        <p class="romaji">SHICHI</p>
-                        <p class="hiragana">しち</p>
-                    </div>
+                    <div class="number-badge">7</div>
+                    <p class="romaji">SHICHI</p>
+                    <p class="hiragana">しち</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">8</div>
-                        <p class="romaji">HACHI</p>
-                        <p class="hiragana">はち</p>
-                    </div>
+                    <div class="number-badge">8</div>
+                    <p class="romaji">HACHI</p>
+                    <p class="hiragana">はち</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">9</div>
-                        <p class="romaji">KYUU</p>
-                        <p class="hiragana">きゅう</p>
-                    </div>
+                    <div class="number-badge">9</div>
+                    <p class="romaji">KYUU</p>
+                    <p class="hiragana">きゅう</p>
                 </div>
                 <div class="number-card">
-                    <div class="card-inner">
-                        <div class="number-badge">10</div>
-                        <p class="romaji">JUU</p>
-                        <p class="hiragana">じゅう</p>
-                    </div>
+                    <div class="number-badge">10</div>
+                    <p class="romaji">JUU</p>
+                    <p class="hiragana">じゅう</p>
                 </div>
             </div>
         </section>
