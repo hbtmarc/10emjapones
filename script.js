@@ -30,14 +30,7 @@ function getRandomNumber() {
 
     currentPronunciation = numbers[randomIndex];
     
-    const pronunciationEl = document.getElementById("pronunciation");
-    
-    // Animação de saída
-    pronunciationEl.style.animation = 'none';
-    pronunciationEl.offsetHeight; // Trigger reflow
-    pronunciationEl.style.animation = 'bounceIn 0.6s ease-out';
-    
-    pronunciationEl.textContent = currentPronunciation.pron;
+    document.getElementById("pronunciation").textContent = currentPronunciation.pron;
     document.getElementById("userInput").value = '';
     
     // Limpa feedback
@@ -49,7 +42,7 @@ function getRandomNumber() {
     scoreAnim.classList.remove('show');
 }
 
-// Validação da resposta com feedback aprimorado
+// Validação da resposta
 function validateAnswer() {
     const userAnswer = document.getElementById("userInput").value.trim();
     const feedback = document.getElementById("feedback");
@@ -65,15 +58,10 @@ function validateAnswer() {
         score += 1;
         updateScore();
 
-        // Animação de sucesso
         scoreAnim.textContent = "+1 🎉";
         scoreAnim.style.color = "#38ef7d";
-        scoreAnim.classList.add('show');
         
         showFeedback(feedback, `✓ Correto! ${currentPronunciation.jp} = ${currentPronunciation.en}`, "correct");
-        
-        // Efeito de confete visual (simulado com emojis)
-        createConfetti();
         
     } else {
         // Resposta incorreta
@@ -82,93 +70,27 @@ function validateAnswer() {
 
         scoreAnim.textContent = "✗ ERRO";
         scoreAnim.style.color = "#f45c43";
-        scoreAnim.classList.add('show');
         
         showFeedback(
             feedback, 
             `✗ A resposta é ${currentPronunciation.en}<br><small style="opacity:0.8">${currentPronunciation.jp} (${currentPronunciation.pron})</small>`, 
             "error"
         );
-        
-        // Shake animation no input
-        const input = document.getElementById("userInput");
-        input.style.animation = 'shake 0.5s';
-        setTimeout(() => {
-            input.style.animation = '';
-        }, 500);
     }
 
-    // Remove animação do score após delay
-    setTimeout(() => {
-        scoreAnim.classList.remove('show');
-    }, 1500);
-
-    // Próximo número após delay
-    setTimeout(getRandomNumber, 2500);
+    // Próximo número
+    setTimeout(getRandomNumber, 1500);
 }
 
-// Atualiza pontuação com animação
+// Atualiza pontuação
 function updateScore() {
-    const scoreValue = document.getElementById("scoreValue");
-    scoreValue.style.transform = 'scale(1.3)';
-    scoreValue.textContent = score;
-    
-    setTimeout(() => {
-        scoreValue.style.transform = 'scale(1)';
-    }, 300);
+    document.getElementById("scoreValue").textContent = score;
 }
 
-// Exibe feedback com animação
+// Exibe feedback
 function showFeedback(element, message, type) {
     element.innerHTML = message;
     element.classList.add('show', type);
-}
-
-// Cria efeito de confete
-function createConfetti() {
-    const emojis = ['🎉', '✨', '⭐', '🌟', '💫'];
-    const container = document.querySelector('.pronunciation-display');
-    
-    for (let i = 0; i < 6; i++) {
-        const confetti = document.createElement('div');
-        confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        confetti.style.position = 'absolute';
-        confetti.style.fontSize = '24px';
-        confetti.style.pointerEvents = 'none';
-        confetti.style.left = `${50 + (Math.random() - 0.5) * 100}%`;
-        confetti.style.top = '50%';
-        confetti.style.animation = `confettiFall ${0.8 + Math.random() * 0.4}s ease-out forwards`;
-        
-        container.appendChild(confetti);
-        
-        setTimeout(() => confetti.remove(), 1200);
-    }
-}
-
-// Adiciona animação de confete ao CSS dinamicamente
-if (!document.getElementById('confetti-animation')) {
-    const style = document.createElement('style');
-    style.id = 'confetti-animation';
-    style.textContent = `
-        @keyframes confettiFall {
-            0% { 
-                transform: translateY(0) rotate(0deg) scale(0);
-                opacity: 1;
-            }
-            100% { 
-                transform: translateY(${-100 - Math.random() * 50}px) 
-                           rotate(${360 * (Math.random() - 0.5)}deg) 
-                           scale(1);
-                opacity: 0;
-            }
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-    `;
-    document.head.appendChild(style);
 }
 
 // Toggle da seção de fixação
@@ -200,28 +122,7 @@ document.getElementById("userInput").addEventListener("keypress", function (e) {
     }
 });
 
-// Adiciona hover effect nos cards
+// Inicializa
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.number-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.03)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-        
-        // Efeito de clique
-        card.addEventListener('click', function() {
-            const badge = this.querySelector('.number-badge');
-            badge.style.animation = 'none';
-            badge.offsetHeight; // Trigger reflow
-            badge.style.animation = 'bounceIn 0.4s ease-out';
-        });
-    });
-    
-    // Inicia com primeiro número
     getRandomNumber();
 });
